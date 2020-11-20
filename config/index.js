@@ -3,8 +3,8 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
 module.exports = {
+  baseUrl: '/',
   dev: {
 
     // Paths
@@ -14,7 +14,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 4200, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -72,5 +72,16 @@ module.exports = {
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
+  },
+
+  proxyTable: {
+    '/website/api': {
+      target: "localhost:9393/website/api",
+      changeOrigin: true,
+      pathRewrite: {
+        '^/website/api':''
+      }
+    }
   }
+
 }

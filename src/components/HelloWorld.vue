@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <el-button >默认按钮</el-button>
+    <el-button @click="test">默认按钮</el-button>
     <el-button type="primary">主要按钮</el-button>
     <el-button type="text">文字按钮</el-button>
   </div>
@@ -11,6 +11,13 @@
 <script>
 export default {
   name: 'HelloWorld',
+  methods: {
+    test(){
+      console.log("request")
+      this.$axios.get("http//localhost:9393/website/api/token").then((res) => res);
+    }
+
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

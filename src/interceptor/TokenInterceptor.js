@@ -5,7 +5,7 @@ export default {
   name: 'TokenInterceptor'
 }
 axios.interceptors.request.use(config => {
-  let token = localStorage.getItem("Bearer");
+  let token = localStorage.getItem("token");
   let url = config.url;
   console.log(url)
   // 统一加上服务端前缀
@@ -13,7 +13,11 @@ axios.interceptors.request.use(config => {
   if (!url.startsWith('https://') && !url.startsWith('http://')) {
     config.url = environment.SERVER_URL + url;
   }
-  debugger
+  if(!token){
+    config.headers({
+      'Authorization': 'Bearer ' + token
+    });
+  }
   return config;
 });
 

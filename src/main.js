@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import TokenInterceptor from '../src/interceptor/TokenInterceptor';
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
+import zMenu from './components/Menu'
 
 Vue.config.productionTip = false
 
@@ -15,7 +16,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 /* eslint-disable no-new */
 Vue.prototype.$axios = axios;
 
-Vue.use(ElementUI)
+Vue.use(ElementUI, zMenu)
 new Vue({
   el: '#app',
   router,

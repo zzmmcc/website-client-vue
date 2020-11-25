@@ -13,10 +13,8 @@ axios.interceptors.request.use(config => {
   if (!url.startsWith('https://') && !url.startsWith('http://')) {
     config.url = environment.SERVER_URL + url;
   }
-  if(!token){
-    config.headers({
-      'Authorization': 'Bearer ' + token
-    });
+  if(token){
+    config.headers['Authorization'] = 'Bearer ' + token;
   }
   return config;
 });

@@ -1,16 +1,32 @@
 <template>
   <div>
-    <ui>
-      <li>11</li>
-      <li>22</li>
-      <li>33</li>
-    </ui>
+    <ul>
+      <li v-for="menu in menus">{{menu.name}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
+// export interface MenuDTO{
+//   name: string
+//   id: string
+//   title: string
+// }
 export default {
-name: "Menu"
+  data() {
+    return {
+      menus: []
+    }
+  },
+  name: "Menu",
+  mounted () {
+    this.$axios.get('/api/menu/all').then(
+      (res) => {
+        console.log(res)
+        this.$data.menus = res.data
+      })
+    debugger
+  }
 }
 </script>
 

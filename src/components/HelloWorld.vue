@@ -2,9 +2,9 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <el-button @click="token">默认按钮</el-button>
-    <el-button @click="reToken" type="primary">主要按钮</el-button>
-    <el-button type="text">文字按钮</el-button>
+    <el-button @click="token">获取token</el-button>
+    <el-button @click="reToken" type="primary">重新生成token</el-button>
+    <el-button @click="clearToken" type="text">清除token</el-button>
   </div>
 </template>
 
@@ -16,12 +16,14 @@ export default {
       // let token = new TokenService();
       // let promise = token.generatorToken("zhangsan", "123456")
       this.$axios.post("/api/token", {"account": "zhangsan", "password": "123456"})
-        .then((res) => localStorage.setItem('token', res.token));
+        .then((res) => localStorage.setItem('token', res.data.token));
     },
     reToken(){
-      this.$axios.get("/api/token").then((res) => res);
+      this.$axios.get("/api/token").then((res) => localStorage.setItem('token', res.data.token));
+    },
+    clearToken(){
+      localStorage.setItem('token', null)
     }
-
   },
   data () {
     return {

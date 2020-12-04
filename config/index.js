@@ -76,7 +76,7 @@ module.exports = {
 
   proxyTable: {
     '/website/api': {
-      target: "localhost:9393/website/api",
+      target: "42.192.197.101:9595/website/api",
       changeOrigin: true,
       pathRewrite: {
         '^/website/api':''

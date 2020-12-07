@@ -1,10 +1,9 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
     <el-button @click="token">获取token</el-button>
     <el-button @click="reToken" type="primary">重新生成token</el-button>
     <el-button @click="clearToken" type="text">清除token</el-button>
+    <el-button type="text" > <router-link :to="{'article': article}">文章</router-link></el-button>
   </div>
 </template>
 
